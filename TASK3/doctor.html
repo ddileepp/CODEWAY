@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Portal</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        #patientDetailsContainer {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #patientDetailsList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            border-bottom: 1px solid #ddd;
+            padding: 15px;
+            color: #555;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="patientDetailsContainer">
+        <h1>Doctor Portal</h1>
+
+        <div id="patientDetailsContainer">
+            <h2>Patient Details</h2>
+            <ul id="patientDetailsList">
+                <!-- Patient details will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Retrieve patient details from localStorage
+        const patientDetailsJSON = localStorage.getItem('patientDetails');
+        if (patientDetailsJSON) {
+            const patientDetails = JSON.parse(patientDetailsJSON);
+            displayPatientDetails(patientDetails);
+        }
+
+        // Function to display patient details on the doctor portal
+        function displayPatientDetails(patientDetails) {
+            const patientDetailsList = document.getElementById('patientDetailsList');
+
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <strong>Name:</strong> ${patientDetails.name}
+                <br>
+                <strong>Email:</strong> ${patientDetails.email}
+                <br>
+                <strong>Date of Appointment:</strong> ${patientDetails.appointmentDate}
+                <br>
+                <strong>Time of Appointment:</strong> ${patientDetails.appointmentTime}
+            `;
+
+            patientDetailsList.appendChild(li);
+        }
+    </script>
+</body>
+</html>

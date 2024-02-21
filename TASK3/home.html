@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeleHealth Prestige - Premium Health Packages</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background 0.3s ease-in-out;
+            margin-bottom: 100px;
+        }
+
+        header:hover {
+            background: #297fb8;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 15px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #67a5d1;
+        }
+
+        .dropdown-btn {
+            background-color: #67a5d1;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .dropdown-btn:hover {
+            background-color: #527b99;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            display: none;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #67a5d1;
+            color: #fff;
+        }
+
+        .get-location-btn:hover {
+            background-color: #45a049;
+        }
+
+        .location-info {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #060606;
+            font-weight: bold;
+        }
+
+        /* Pop Section Styles */
+        .pop {
+            padding-left: 30px;
+            text-align: center;
+            font-size: 36px;
+            font-weight: 600;
+            color: #3498db;
+            
+        }
+
+        /* Package Section Styles */
+        .pack {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px;
+            margin-left: 35px;
+        }
+
+        .item, .item1, .view-all {
+            border: 2px solid #d4d4d4;
+            padding: 10px 20px;
+            margin: 8px 12px 8px 0;
+            border-radius: 30px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        .item1, .view-all {
+            background-color: #3498db;
+            color: white;
+            border: 2px solid #3498db;
+        }
+
+        .item:hover, .item1:hover, .view-all:hover {
+            background-color: #3498db;
+            color: white;
+            border-color: #297fb8;
+        }
+
+        .view-all {
+            margin-left: 0px;
+            font-weight: 700;
+        }
+
+        /* Package Card Styles */
+        .packs {
+            display: flex;
+            justify-content: space-around;
+            align-items: stretch;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .pack1 {
+            border: 2px solid #e1e1e1;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            background: linear-gradient(to bottom, #ffffff, #f5f5f5);
+            border-radius: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .pack1:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: #3498db;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        span {
+            display: block;
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        p {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            border: 0px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        button:hover {
+            background-color: #297fb8;
+        }
+
+        /* Body Section Styles */
+        .body1 {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px; /* Added padding for spacing */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            width: 100%;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px;
+            background-color: white;
+            padding: 10px 40px 5px 10px; /* Left and right paddings of 200 */
+            border-radius: 10px;
+        }
+        
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            width: calc(100% + 20px);
+            margin-bottom: 20px;
+        }
+
+        .items {
+            position: relative;
+            padding: 10px 5px 10px 10px;
+            margin: 5px;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            color: black;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+            flex: 1 0 calc(25% - 20px);
+            max-width: calc(25% - 20px);
+        }
+
+        .items:hover {
+            background-color: #f0f0f0;
+        }
+
+        .items.clicked {
+            background-color: #fff;
+        }
+
+        .items.clicked .value {
+            color: #3498DB;
+        }
+
+        .plus {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #3498DB;
+            border: 1px solid #3498DB;
+            padding: 2px 5px;
+            transition: opacity 0.3s ease, border-color 0.3s ease;
+            z-index: 1;
+        }
+
+        .plus.hide {
+            opacity: 0;
+        }
+
+        .tick {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #3498DB;
+            transition: opacity 0.3s ease;
+            display: none;
+            z-index: 1;
+        }
+
+        .tick.show {
+            display: inline-block;
+        }
+
+        .value {
+            position: relative;
+            z-index: 2;
+        }
+
+        .proceed-button {
+            /* Updated button styles */
+            padding: 15px 30px;
+            background-color: #3498DB;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .proceed-button:hover {
+            background-color: #297fb8;
+        }
+
+        /* Diseases Section Styles */
+        h4#remotes {
+            margin-left: 30px;
+            color: #3498db;
+            font-size: 24px;
+            border-top: 100px;
+        }
+        #remotes{
+            margin-top: 150px;
+        }
+
+        .diseases {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            
+        }
+
+        .d1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            text-align: center;
+        }
+
+        .imgs {
+            border-radius: 30px;
+            height: 150px;
+            width: 170px;
+            object-fit: cover; /* Ensure image covers the entire container */
+        }
+
+        .dis {
+            color: #3498db;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .asha-portal-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            
+        }
+
+        .asha-portal-button:hover {
+            background-color: #297fb8;
+        }
+        .flex-container {
+  display: flex;
+  background-color:#3498db;
+}
+.dd{
+  display: flex;
+  flex-direction: column ;
+  justify-content: space-around;
+}
+.flex-container > div {
+  background-color: #3498db;
+  margin: 10px;
+  padding: 20px;
+  font-size: 15px;
+  padding-left: 100px;
+}
+a{
+    text-decoration: none;
+}
+.image-section{
+    border-radius: 10px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">TeleHealth Prestige</div>
+        <nav>
+            <a href="health2.html">Home</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+            <a href="asha_portal.html" class="asha-portal-button">Go to ASHA Portal</a>
+           <a href="doctor.html">Doctor Portal</a>
+           <a href="patient.html">Patient Portal</a>
+            <div class="dropdown">
+                <button class="dropdown-btn">Locations</button>
+                <div class="dropdown-content">
+                    <a href="#">Anantapur</a>
+                    <a href="#">Chittoor</a>
+                    <a href="#">East Godavari</a>
+                    <a href="#">Guntur</a>
+                    <a href="#">Krishna</a>
+                    <a href="#">Kurnool</a>
+                    <a href="#">Nellore</a>
+                    <a href="#">Prakasam</a>
+                    <a href="#">Srikakulam</a>
+                    <a href="#">Visakhapatnam</a>
+                    <a href="#">Vizianagaram</a>
+                    <a href="#">West Godavari</a>
+                    <a href="#">Y.S.R. Kadapa</a>
+                </div>
+                <button class="get-location-btn" onclick="getLocation()">Get Location</button>
+            </div>
+        </nav>
+        <section id="home">
+        <div class="location-info" id="locationInfo"></div>
+   
+    </header>
+    <section id="home">
+        <div class="location-info" id="locationInfo"></div>
+    
+    <h4 id="remotes">Dreadful Diseases in Remote Areas</h4>
+    <div class="diseases">
+        <div class="d1">
+            <img src="d1.jpg" alt="" class="imgs">
+            <span class="dis">Premature Disorders</span>
+        </div>
+        <div class="d1">
+            <img src="d3.jpeg" alt="" class="imgs">
+            <span>Malnutrition</span>
+        </div>
+        <div class="d1">
+            <img src="d2.avif" alt="" class="imgs">
+            <span>Heart Attack</span>
+        </div>
+        <div class="d1">
+            <img src="d4.jpeg" alt="" class="imgs">
+            <span>Dengue</span>
+        </div>
+        <div class="d1">
+            <img src="d5.jpeg" alt="" class="imgs">
+            <span>Tuberculosis</span>
+        </div>
+        <div class="d1">
+            <img src="d6.webp" alt="" class="imgs">
+            <span>Cancer</span>
+        </div>
+    </div>
+    <div class="pop">Premium Health Packages</div>
+    <div class="pack">
+        <div class="item1">All Packages</div>
+        <div class="item">Diabetes</div>
+        <div class="item">Dengue</div>
+        <div class="item">Cholera</div>
+        <div class="item">Cardiovascular</div>
+        <div class="item">Fitness</div>
+        <div class="item">Malnutrition</div>
+        <div class="item">Blood Pressure</div>
+        <div class="view-all">View All</div>
+    </div>
+    <div class="packs">
+        <div class="pack1">
+            <h2>Good Health Smart</h2>
+            <span>Includes 59 Tests</span>
+            <p>Full Body Checkup</p>
+            <button><a href="payment.html">Add to Cart</a></button>
+        </div>
+        <div class="pack1">
+            <h2>Good Health Golden</h2>
+            <span>Includes 3 Tests</span>
+            <p>Thyroid Tests</p>
+            <button><a href="payment.html">Add to Cart</a></button>
+        </div>
+        <div class="pack1">
+            <h2>Good Health Premium</h2>
+            <span>Includes 75 Tests</span>
+            <p>Blood Cell Count</p>
+            <button><a href="payment.html">Add to Cart</a></button>
+        </div>
+        <div class="pack1">
+            <h2>Good Health Premium</h2>
+            <span>Includes 75 Tests</span>
+            <p>Blood Cell Count</p>
+            <button><a href="payment.html">Add to Cart</a></button>
+        </div>
+    </div>
+    <div class="body1">
+        <div class="image-section">
+            <img src="lab2.png" alt="Image" style="width: 300px; height: auto;">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="items"><span class="value">Thyroid Test</span> <span class="plus">+</span><span class="tick">✔</span></div>
+                <div class="items"><span class="value">Diabetes</span> <span class="plus">+</span><span class="tick">✔</span></div>
+                <div class="items"><span class="value">B.P</span> <span class="plus">+</span><span class="tick">✔</span></div>
+                <div class="items"><span class="value">Urine Test</span> <span class="plus">+</span><span class="tick">✔</span></div>
+            </div>
+            <div class="row">
+                <div class="items"><span class="value">Blood Count Test</span> <span class="plus">+</span><span class="tick">✔</span></div>
+                <div class="items"><span class="value">Covid</span> <span class="plus">+</span><span class="tick">✔</span></div>
+                <div class="items"><span class="value">Kidney Function</span> <span class="plus">+</span><span class="tick">✔</span></div>
+                <div class="items"><span class="value">Liver Function</span> <span class="plus">+</span><span class="tick">✔</span></div>
+            </div>
+        </div>
+        <button class="proceed-button">Proceed</button>
+    </div>
+    <script>
+         document.addEventListener('DOMContentLoaded', function () {
+        const dropdownBtn = document.querySelector('.dropdown-btn');
+        const dropdownContent = document.querySelector('.dropdown-content');
+
+        dropdownBtn.addEventListener('click', function () {
+            // Toggle the display property of the dropdown content
+            dropdownContent.style.display = (dropdownContent.style.display === 'block') ? '' : 'block';
+        });
+    });
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPosition(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        // Replace 'YOUR_OPENCAGE_API_KEY' with your actual OpenCage API key
+        const apiKey = 'd8002edd0e3845dfbd115130c95b7cbe';
+        const apiUrl = `https://api.opencagedata.com/geocode/v1/json?key=${apiKey}&q=${latitude}+${longitude}&pretty=1`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.results && data.results.length > 0) {
+                    const locationName = data.results[0].formatted;
+                    document.getElementById('locationInfo').innerText = `Your current location: ${locationName}`;
+                } else {
+                    document.getElementById('locationInfo').innerText = 'Location information not available.';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching location information:', error);
+                document.getElementById('locationInfo').innerText = 'Error fetching location information.';
+            });
+    }
+
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                alert("User denied the request for Geolocation.");
+                break;
+            case error.POSITION_UNAVAILABLE:
+                alert("Location information is unavailable.");
+                break;
+            case error.TIMEOUT:
+                alert("The request to get user location timed out.");
+                break;
+            case error.UNKNOWN_ERROR:
+                alert("An unknown error occurred.");
+                break;
+        }
+    }
+
+    function showLoginSignupPrompt() {
+        alert('This is just a placeholder. Implement your login/signup logic here.');
+    }
+</script>
+<footer>
+
+    <div class="flex-container">
+      <div><p><b>Know Us</b></p>
+    <p>About Us</P>
+    <p>Contact Us
+    <p>Press Coverage</P>
+    <p>Careers</P>
+    <p>Business Partnership</P>
+    <p>Become a Health Partner</P>
+    <p>Corporate Governance</p></div>
+      <div><p><b>Our Policies</b></p>
+    <p>Privacy Policy</P>
+    <p>Terms and Conditions</p>
+    <p>Editorial Policy</p>
+    <p>Return Policy</p>
+    <p>IP Policy</p>
+    <p>Grievance Redressal Policy</P>
+    <p>Fake Jobs and Fraud Disclaimer</p></div>
+      <div><p><b>Our Services</b></P>
+    <p>Order Medicines</p>
+    <p>Book Lab Tests</p>
+    <p>Consult a Doctor</p>
+    <p>Ayurveda Articles</p>
+    <p>Hindi Articles</p>
+    <p>Care Plan</p></div> 
+    <div class="dd">
+        <a href="https://www.instagram.com/amarnath_dwibhashyam/">
+            <img src="WhatsApp Image 2024-02-01 at 12.29.32_cc7723f0.jpg" style="width: 60px; height: 40px;">
+        </a>
+        <a href="https://www.instagram.com/amarnath_dwibhashyam/">
+          <img src="fb.jpg" style="width: 60px; height: 40px;">
+      </a>
+    <a href="https://www.instagram.com/amarnath_dwibhashyam/">
+        <img src="WhatsApp Image 2024-02-01 at 12.30.37_777d97e4.jpg" style="width: 60px; height: 40px;">
+    </a>
+    </div>
+    </footer>
+    
+    
+    
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASHA Portal</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #297fb8;
+        }
+
+        .patient-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .patient-list li {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ASHA Portal</h1>
+        <nav>
+            <ul>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#patients">Patients</a></li>
+                <li><a href="#messages">Messages</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+
+    <section id="schedule">
+        <h2>Schedule</h2>
+        <!-- Display ASHA worker's schedule here -->
+        <p>No upcoming appointments.</p>
+    </section>
+
+    <section id="patients">
+        <h2>Patients</h2>
+        <!-- Display list of assigned patients with telehealth communication options -->
+        <ul class="patient-list">
+            <li>
+                <span>Patient Name: John Doe</span>
+                <span>Appointment Time: 10:00 AM</span>
+                <a href="#" class="button">Join Telehealth</a>
+            </li>
+            <li>
+                <span>Patient Name: Jane Smith</span>
+                <span>Appointment Time: 11:30 AM</span>
+                <a href="#" class="button">Join Telehealth</a>
+            </li>
+        </ul>
+    </section>
+
+    <section id="messages">
+        <h2>Messages</h2>
+        <!-- Display messages or notifications for ASHA worker -->
+        <p>No new messages.</p>
+    </section>
+
+    <section id="profile">
+        <h2>Profile</h2>
+        <!-- Display ASHA worker's profile information -->
+        <p>Name: ASHA Worker</p>
+        <p>Location: [Your Location]</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Your Telehealth App</p>
+    </footer>
+
+    <script>
+        // You can add JavaScript logic for dynamic functionalities
+        // such as handling interactions, showing/hiding elements, etc.
+    </script>
+</body>
+</html>
